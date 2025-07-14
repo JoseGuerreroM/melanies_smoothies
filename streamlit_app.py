@@ -11,6 +11,9 @@ st.write(
   """
 )
 
+cnx = st.connection("snowflake")
+session = cnx.session()
+
 title = st.text_input("Movie title", "Life of Brian")
 st.write("The current movie title is", title)
 
@@ -45,8 +48,7 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered!  {name_on_order}', icon="✅")
 
-cnx = st.connection("snowflake")
-session = cnx.session()
+
         
     
 
